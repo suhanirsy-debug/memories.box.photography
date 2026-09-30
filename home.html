@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memories Box Photography | Deepak Kumar Gupta</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-cream: #FDFBF7;
+            --bg-white: #FFFFFF;
+            --card-cream: #F7F3EC;
+            --text-dark: #2A2825;
+            --text-muted: #6B655F;
+            --accent-gold: #C5A059;
+            --accent-gold-hover: #A8833E;
+            --border-color: #E8E2D8;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .brand-logo {
+            font-family: var(--font-heading);
+            letter-spacing: 0.5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        /* --- Header / Navbar --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .brand-logo span {
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        .cta-btn {
+            background-color: var(--accent-gold);
+            color: var(--bg-white) !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 2px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-gold-hover);
+            border-color: var(--accent-gold-hover);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            background: linear-gradient(rgba(253, 251, 247, 0.85), rgba(253, 251, 247, 0.95)),
+                        url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-dark);
+            padding: 0.6rem 1.4rem;
+            border: 1px solid var(--text-dark);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-outline:hover {
+            background: var(--text-dark);
+            color: var(--bg-white);
+        }
+
+        /* --- Section Styling --- */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- About Section --- */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+            border: 10px solid var(--bg-white);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background-color: var(--accent-gold);
+            color: var(--bg-white);
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .experience-badge .years {
+            font-size: 2.2rem;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            line-height: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .highlight-box {
+            background-color: var(--card-cream);
+            padding: 20px;
+            border-left: 3px solid var(--accent-gold);
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .global-reach {
+            margin-top: 25px;
+            padding: 15px 20px;
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .global-reach h4 {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        /* --- Services Section --- */
+        .services {
+            background-color: var(--bg-white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: var(--bg-cream);
+            padding: 35px 25px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-color: var(--accent-gold);
+        }
+
+        .service-icon {
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Style & Specialization Section --- */
+        .specialization {
+            background-color: var(--card-cream);
+            text-align: center;
+        }
+
+        .spec-features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .spec-item {
+            background: var(--bg-white);
+            padding: 20px 30px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- Gallery Section --- */
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 18px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            color: var(--text-muted);
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            height: 260px;
+            cursor: pointer;
+            background-color: #eee;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(42, 40, 37, 0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: var(--bg-white);
+            text-align: center;
+            padding: 15px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .gallery-overlay span {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+        }
+
+        /* --- Branches / Locations --- */
+        .branches {
+            background-color: var(--bg-white);
+        }
+
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .branch-card {
+            background: var(--bg-cream);
+            padding: 30px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .branch-card h3 {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .branch-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- Contact Section --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            background-color: var(--card-cream);
+            padding: 40px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .info-item i {
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            margin-top: 5px;
+        }
+
+        .info-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+
+        .info-item p, .info-item a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .info-item a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Editable direct email styling */
+        .editable-email {
+            display: inline-block;
+            background: var(--bg-white);
+            padding: 4px 8px;
+            border: 1px dashed var(--accent-gold);
+            border-radius: 3px;
+            color: var(--text-dark);
+            outline: none;
+            font-family: inherit;
+        }
+
+        .editable-email:focus {
+            background: #fff;
+            border-style: solid;
+        }
+
+        .contact-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1eb857;
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        /* Simple Contact Form */
+        .contact-form {
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-cream);
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            font-family: inherit;
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--card-cream);
+            text-align: center;
+            padding: 30px 5%;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            color: #a09a92;
+        }
+
+        /* --- Lightbox Modal --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 4px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 868px) {
+            nav ul {
+                display: none;
+            }
+            .about-container, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .experience-badge {
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="brand-logo">Memories Box <span>Photography</span></div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#branches">Branches</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="https://wa.me/919831249356?text=Hello%20Deepak%20ji,%20I%20would%20like%20to%20inquire%20about%20a%20photo%20shoot." target="_blank" class="cta-btn">
+            <i class="fab fa-whatsapp"></i> Chat Now
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Preserving Precious Moments</div>
+            <h1>Memories Box Photography</h1>
+            <p>Where moments turn into timeless memories. Led by <strong>Deepak Kumar Gupta</strong>, offering 38+ years of expertise in candid photography, cinematography, and global storytelling.</p>
+            <div class="hero-buttons">
+                <a href="#gallery" class="cta-btn">Explore Gallery</a>
+                <a href="#contact" class="btn-outline">Book a Session</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="section-title">
+            <h2>About Us</h2>
+            <p>38+ Years of Crafting Timeless Visuals</p>
+        </div>
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&w=800&q=80" alt="Deepak Kumar Gupta Photography">
+                <div class="experience-badge">
+                    <div class="years">38+</div>
+                    <div style="font-size: 0.8rem; text-transform: uppercase;">Years Experience</div>
+                </div>
+            </div>
+            <div class="about-text">
+                <h3>Welcome to Memories Box Photography</h3>
+                <p>Where moments turn into timeless memories.</p>
+                <p>I'm <strong>Deepak Kumar Gupta</strong>, a professional photographer based in Kolkata, West Bengal. With a passion for storytelling through images, I've been capturing life's precious moments for <strong>38 years</strong>.</p>
+                
+                <p>From the sparkle of a wedding day to the joy of welcoming a new baby, and from the glow of maternity to the energy of a concert, I aim to freeze those moments in a way that's authentic and beautiful. My lens captures it all — the love, the laughter, the drama, and the excitement.</p>
+                
+                <div class="highlight-box">
+                    "Our approach is simple: create a relaxed, fun atmosphere, and let the moments unfold naturally. 📸"
+                </div>
+
+                <div class="global-reach">
+                    <h4>Global Reach 🌍</h4>
+                    <p>With experience working across the globe including <strong>India, Singapore, Malaysia, Dubai, Thailand, Vietnam, and Nepal</strong>. We are ready to capture your story wherever you are.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Tailored Photography Solutions</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-heart"></i></div>
+                <h3>1. Wedding Photography</h3>
+                <p>Capturing the romance, joy, and drama of your special day with elegant candid and cinematic style.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-baby"></i></div>
+                <h3>2. New Baby & Maternity</h3>
+                <p>Cherishing the delicate and sacred moments of new life and the beauty of motherhood.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-user"></i></div>
+                <h3>3. Modelling & Portfolio</h3>
+                <p>Bringing your visual vision to life with creative, high-fashion, and stylish portfolio shoots.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-running"></i></div>
+                <h3>4. Sports Photography</h3>
+                <p>Freezing high-speed action, raw thrill, and the glorious moments of triumph.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-box-open"></i></div>
+                <h3>5. Product Photography</h3>
+                <p>Showcasing your commercial products in the best light to elevate your business visual identity.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-guitar"></i></div>
+                <h3>6. Concert Photography</h3>
+                <p>Capturing the vibrant energy, pulse, and sheer excitement of live music performances.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-place-of-worship"></i></div>
+                <h3>7. Ritual Photography</h3>
+                <p>Preserving the essence of your spiritual moments with devotion, reverence, and care.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialization Section -->
+    <section class="specialization">
+        <div class="section-title">
+            <h2>Our Photography Style</h2>
+            <p>Mastery of Modern Visual Techniques</p>
+        </div>
+        <p style="max-width: 650px; margin: 0 auto; color: var(--text-muted);">We specialize in delivering high-definition visual stories crafted with contemporary aesthetics and artistic precision.</p>
+        <div class="spec-features">
+            <div class="spec-item"><i class="fas fa-video" style="color:var(--accent-gold);"></i> Cinematography</div>
+            <div class="spec-item"><i class="fas fa-camera" style="color:var(--accent-gold);"></i> Candid Photography</div>
+            <div class="spec-item"><i class="fas fa-plane" style="color:var(--accent-gold);"></i> Aerial & Drone Shoots</div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="section-title">
+            <h2>Our Gallery</h2>
+            <p>A Snapshot Of Our Work</p>
+        </div>
+
+        <div class="gallery-filter">
+            <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+            <button class="filter-btn" onclick="filterGallery('wedding')">Weddings</button>
+            <button class="filter-btn" onclick="filterGallery('baby')">Baby & Maternity</button>
+            <button class="filter-btn" onclick="filterGallery('portrait')">Portfolio</button>
+            <button class="filter-btn" onclick="filterGallery('events')">Events & Sports</button>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid">
+            <div class="gallery-item wedding" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Wedding">
+                <div class="gallery-overlay">
+                    <h4>Royal Wedding</h4>
+                    <span>Wedding Photography</span>
+                </div>
+            </div>
+            <div class="gallery-item baby" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=800&q=80" alt="New Baby">
+                <div class="gallery-overlay">
+                    <h4>New Life</h4>
+                    <span>Baby & Maternity</span>
+                </div>
+            </div>
+            <div class="gallery-item portrait" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Modelling">
+                <div class="gallery-overlay">
+                    <h4>Fashion Shoot</h4>
+                    <span>Modelling & Portfolio</span>
+                </div>
+            </div>
+            <div class="gallery-item events" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" alt="Concert">
+                <div class="gallery-overlay">
+                    <h4>Live Concert</h4>
+                    <span>Concert Photography</span>
+                </div>
+            </div>
+            <div class="gallery-item wedding" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Ceremony">
+                <div class="gallery-overlay">
+                    <h4>Candid Moments</h4>
+                    <span>Wedding Photography</span>
+                </div>
+            </div>
+            <div class="gallery-item events" onclick="openModal(this)">
+                <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80" alt="Sports">
+                <div class="gallery-overlay">
+                    <h4>Action Thrill</h4>
+                    <span>Sports Photography</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Branches Section -->
+    <section id="branches" class="branches">
+        <div class="section-title">
+            <h2>Our Branches</h2>
+            <p>Visit Us At Our Three Kolkata Locations</p>
+        </div>
+        <div class="branches-grid">
+            <div class="branch-card">
+                <h3><i class="fas fa-map-marker-alt"></i> 1. Central Kolkata</h3>
+                <p>14/1H Durga Pithuri Lane,<br>Kolkata 700012</p>
+            </div>
+            <div class="branch-card">
+                <h3><i class="fas fa-map-marker-alt"></i> 2. New Town</h3>
+                <p>DD 207, Street No. 293,<br>Kolkata 700156</p>
+            </div>
+            <div class="branch-card">
+                <h3><i class="fas fa-map-marker-alt"></i> 3. Lake Town</h3>
+                <p>250/2 Jessore Road, Patipukur,<br>Kolkata 700048</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+            <p>Let's Plan Your Next Photography Session</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Details</h3>
+                <p style="margin-bottom:25px; color:var(--text-muted);">Reach out directly for bookings, inquiries, or customized package consultations.</p>
+
+                <div class="info-item">
+                    <i class="fas fa-user-check"></i>
+                    <div>
+                        <h4>Lead Photographer</h4>
+                        <p>Deepak Kumar Gupta (35+ / 38 Years Experience)</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email Address</h4>
+                        <a href="mailto:deepakguptaphotography@gmail.com" class="editable-email" contenteditable="true" spellcheck="false">deepakguptaphotography@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>Contact Number</h4>
+                        <p><a href="tel:+919831249356">+91 9831249356</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-actions">
+                    <a href="https://wa.me/919831249356?text=Hi%20Deepak%20Kumar%20Gupta,%20I%20am%20interested%20in%20booking%20a%20photography%20session%20with%20Memories%20Box%20Photography." target="_blank" class="btn-whatsapp">
+                        <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i> Direct WhatsApp Message
+                    </a>
+
+                    <a href="https://www.instagram.com/memories.box.photography" target="_blank" class="btn-instagram">
+                        <i class="fab fa-instagram" style="font-size:1.3rem;"></i> @memories.box.photography
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! Deepak ji will contact you soon.');">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" required placeholder="e.g. Rahul Sharma">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" required placeholder="+91 9832100000">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Interested In</label>
+                        <input type="text" placeholder="e.g. Wedding, Maternity, Concert">
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="4" placeholder="Tell us about your event date, venue or shoot requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-btn" style="width: 100%; justify-content: center; cursor: pointer;">Send Booking Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Memories Box Photography. All rights reserved. | Designed for Deepak Kumar Gupta</p>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img id="modalImg" src="" alt="Full view">
+    </div>
+
+    <script>
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function openModal(element) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            const imgSrc = element.querySelector('img').src;
+            
+            modal.style.display = 'flex';
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
